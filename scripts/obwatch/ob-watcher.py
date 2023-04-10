@@ -666,7 +666,7 @@ class OrderbookPageRequestHeader(http.server.SimpleHTTPRequestHandler):
             orderbook_fmt = json.dumps(self.create_orderbook_obj())
         orderbook_page = orderbook_fmt
         for key, rep in iteritems(replacements):
-            orderbook_page = orderbook_page.replace(key, rep)
+            orderbook_page = orderbook_page.replace(key, str(rep))
         self.send_response(200)
         if self.path.endswith('.json'):
             self.send_header('Content-Type', 'application/json')
